@@ -1,0 +1,113 @@
+body {
+    /*background: #272822;*/
+}
+
+h1 {
+    /*color: white;*/
+    font-family: Courier, Arial;
+    margin-bottom: 11px;
+}
+a, a:hover, a:visited {
+    /*color: #fff;*/
+}
+
+pre {
+    font-size: 130%;
+}
+.lint-error {font-family: arial; font-size: 70%; background: #ffa; color: #a00; padding: 2px 5px 3px; }
+/*.lint-error-icon {color: white; background-color: red; font-weight: bold; border-radius: 50%; padding: 0 3px; margin-right: 7px;}*/
+
+canvas.right {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+}
+
+.CodeMirror {
+    font-size: 110%;
+    line-height: 1.3; 
+    right: 10px;
+    height: 100%;
+}
+
+.CodeMirror-linenumbers { 
+    padding: 0 8px; 
+}
+
+.uniforms input {
+    width: 3.5em;
+    margin-bottom: 5px;
+    /*background: #272822;*/
+    background: transparent;
+    /*color: #fff;*/
+    border: 0;
+    font-size: 13px;
+}
+.uniforms {
+    margin: 0;
+    margin-bottom: 5px;
+}
+.uniforms span {
+    font-family: monospace;
+    height: auto;
+    left: 0px;
+
+    font-size: 14px;
+    line-height: 1.6em;
+}
+
+input[type="color"] {
+  width: 20px;
+}
+input[type="range"] {
+  width: 100px;
+}
+
+#share-buttons img {
+    width: 35px;
+    padding: 5px;
+    border: 0;
+    box-shadow: 0;
+    display: inline;
+}
+
+
+@media only screen and (max-width: 711px) {
+    canvas.right {
+        position: inherit;
+        right: inherit;
+        top: inherit;
+        background-color: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        width:auto;
+        height:auto;
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-device-width: 711px) {
+    canvas.right {
+        position: inherit;
+        right: inherit;
+        top: inherit;
+        background-color: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        width:auto;
+        height:auto;
+        max-width: 100%;
+    }
+}
+
+.CodeMirror {
+    background: transparent;
+}
+
+/*.CodeMirror-gutters {*/
+    /*background-color: transparent;*/
+/*}*/

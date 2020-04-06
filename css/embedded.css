@@ -1,0 +1,30 @@
+.shaderCodeAndCanvas {
+    position: relative;
+    visibility: hidden;
+}
+
+.shaderCodeAndCanvas.codeAttachedAndLoaded {
+    visibility: visible;
+    padding-bottom: 15px;
+}
+
+.shaderCodeAndCanvas canvas {
+    position: absolute;
+    right: 0px;
+    top:0px;
+    width: 158px;
+    height: 158px;
+    border-radius: 10px;
+}
+
+.CodeMirror pre {
+    font-size: inherit;
+    background-color: transparent !important;
+}
+
+.CodeMirror {
+    background-color: transparent;
+    font-size: 90%;
+}
+
+.lint-error {font-family: arial; font-size: 70%; background: #ffa; color: #a00; padding: 2px 5px 3px; }

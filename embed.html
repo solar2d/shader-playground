@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Embed Testing</title>
+</head>
+<body>
+
+<h1>Header</h1>
+
+<p>Lorem ipsum something else is here</p>
+
+<div class="shaderCodeAndCanvas" data-vertex="[16,16,0.3,0]" data-shader-file="shaders/plasma.frag"></div>
+<p>Lorem ipsum something else is here</p>
+
+<div class="shaderCodeAndCanvas" data-vertex="[0.9,0,0,0]" data-shader-file="shaders/bulge.frag" data-textures="textures/512/space-box-diffuse.jpg"></div>
+
+<script>
+    var script = document.createElement('script');
+    script.src = "//shader.coronalabs.com/src/inject-shader.js";
+//    script.src = "src/inject-shader.js";embeddedPrefix = "";
+    document.head.appendChild(script);
+</script>
+
+<p>Lorem ipsum something else is here</p>
+
+</body>
+</html>

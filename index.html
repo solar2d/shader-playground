@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/Article">
+	<head>
+        <link rel="icon" href="https://coronalabs.com/wordpress/wp-content/uploads/2017/06/cropped-icon_32x32@2x-32x32.png" sizes="32x32" />
+        <link rel="icon" href="https://coronalabs.com/wordpress/wp-content/uploads/2017/06/cropped-icon_32x32@2x-192x192.png" sizes="192x192" />
+        <link rel="apple-touch-icon-precomposed" href="https://coronalabs.com/wordpress/wp-content/uploads/2017/06/cropped-icon_32x32@2x-180x180.png" />
+        <meta name="msapplication-TileImage" content="https://coronalabs.com/wordpress/wp-content/uploads/2017/06/cropped-icon_32x32@2x-270x270.png" />
+
+        
+		<meta charset="utf-8">
+        <meta itemprop="name" content="Corona Shader Playground">
+        <meta itemprop="description" content="Fragment shaders live coding with Corona GLSL dialect in your browser!">
+        <meta itemprop="image" content="https://coronalabs.com/wp-content/uploads/2014/12/Flat-Corona-300x300.png">
+        <meta name="viewport" content="initial-scale=0.5">
+        <title>Corona Shader Playground</title>
+
+		<!-- CodeMirror -->
+		<link type='text/css' rel='stylesheet' href="src/codemirror/css/codemirror.css">
+		<link type='text/css' rel="stylesheet" href="src/codemirror/addon/fold/foldgutter.css">	
+		<link type='text/css' rel="stylesheet" href="src/codemirror/addon/dialog/dialog.css">
+		<link type='text/css' rel="stylesheet" href="src/codemirror/addon/hint/show-hint.css">
+		<link type='text/css' rel="stylesheet" href="src/codemirror/theme/monokai.css">
+
+		<!-- CustonCSS CoronaStyle -->
+		<link type='text/css' rel="stylesheet" href="css/coronastyle.css">
+
+		<script type="text/javascript" src="src/codemirror.js"></script>
+		<!--<script type="text/javascript" src="src/codemirror/addon/search/searchcursor.js"></script>-->
+		<!--<script type="text/javascript" src="src/codemirror/addon/search/search.js"></script>-->
+		<!--<script type="text/javascript" src="src/codemirror/addon/dialog/dialog.js"></script>-->
+		<script type="text/javascript" src="src/codemirror/addon/edit/matchbrackets.js"></script>
+		<script type="text/javascript" src="src/codemirror/addon/edit/closebrackets.js"></script>
+		<script type="text/javascript" src="src/codemirror/addon/comment/comment.js"></script>
+		<script type="text/javascript" src="src/codemirror/addon/wrap/hardwrap.js"></script>
+		<script type="text/javascript" src="src/codemirror/addon/fold/foldcode.js"></script>
+		<script type="text/javascript" src="src/codemirror/addon/fold/brace-fold.js"></script>
+		<script type="text/javascript" src="src/codemirror/keymap/sublime.js"></script>
+		<script type="text/javascript" src="src/codemirror/addon/hint/show-hint.js"></script>
+		<script type="text/javascript" src="src/codemirror/mode/clike.js"></script>
+
+		<!-- GLSL Canvas -->
+		<script type="text/javascript" src="src/glslCanvas.js"></script>
+        <script type="text/javascript" src="src/main.js"></script>
+
+	</head>
+	<body>
+		<h1 id="title" >FILE NAME.frag</h1>
+
+        <div class="uniforms">
+            <!--<span class="cm-s-monokai" style="color: #f8f8f2;">-->
+            <span class="cm-s-default">
+
+            <label for="sampler0">CoronaSampler0(</label>
+            <select id="sampler0" onchange="samplerChange(event, 0)">
+                <option disabled selected>-- select a texture --</option>
+                <option value="brick-line-diffuse.jpg">Brick line diffuse</option>
+                <option value="brick-line-normal.jpg">Brick line normal</option>
+                <option value="brick-line-specular.jpg">Brick line specular</option>
+                <option value="brick-ornament-diffuse.jpg">Brick ornament diffuse</option>
+                <option value="brick-ornament-normal.jpg">Brick ornament normal</option>
+                <option value="brick-ornament-specular.jpg">Brick ornament specular</option>
+                <option value="cement-diffuse.jpg">Cement diffuse</option>
+                <option value="cement-normal.jpg">Cement normal</option>
+                <option value="cereal-diffuse.jpg">Cereal diffuse</option>
+                <option value="cereal-normal.jpg">Cereal normal</option>
+                <option value="checkerboard-diffuse.jpg">Checkerboard diffuse</option>
+                <option value="checkerboard-normal.jpg">Checkerboard normal</option>
+                <option value="chip-diffuse.jpg">Chip diffuse</option>
+                <option value="chip-normal.jpg">Chip normal</option>
+                <option value="chip-specular.jpg">Chip specular</option>
+                <option value="clouds.jpg">Clouds</option>
+                <option value="crystals-big-diffuse.jpg">Crystals big diffuse</option>
+                <option value="crystals-big-normal.jpg">Crystals big normal</option>
+                <option value="crystals-big-specular.jpg">Crystals big specular</option>
+                <option value="desert-cracks-diffuse.jpg">Desert cracks diffuse</option>
+                <option value="desert-cracks-normal.jpg">Desert cracks normal</option>
+                <option value="desert-cracks-specular.jpg">Desert cracks specular</option>
+                <option value="desert-ground-diffuse.jpg">Desert ground diffuse</option>
+                <option value="desert-ground-normal.jpg">Desert ground normal</option>
+                <option value="desert-mntn-diffuse.jpg">Desert mntn diffuse</option>
+                <option value="desert-mntn-normal.jpg">Desert mntn normal</option>
+                <option value="desert-sand-diffuse.jpg">Desert sand diffuse</option>
+                <option value="desert-sand-normal.jpg">Desert sand normal</option>
+                <option value="desert-sand-specular.jpg">Desert sand specular</option>
+                <option value="dirt-weeds-diffuse.jpg">Dirt weeds diffuse</option>
+                <option value="dirt-weeds-normal.jpg">Dirt weeds normal</option>
+                <option value="dry-ground-diffuse.jpg">Dry ground diffuse</option>
+                <option value="dry-ground-normal.jpg">Dry ground normal</option>
+                <option value="grass-diffuse.jpg">Grass diffuse</option>
+                <option value="grass-normal.jpg">Grass normal</option>
+                <option value="gray-diffuse.jpg">Gray diffuse</option>
+                <option value="gray-normal.jpg">Gray normal</option>
+                <option value="gray-specular.jpg">Gray specular</option>
+                <option value="jungle-mntn-diffuse.jpg">Jungle mntn diffuse</option>
+                <option value="jungle-mntn-normal.jpg">Jungle mntn normal</option>
+                <option value="leaves-diffuse.jpg">Leaves diffuse</option>
+                <option value="leaves-normal.jpg">Leaves normal</option>
+                <option value="moon-bump.jpg">Moon bump</option>
+                <option value="moon-diffuse.jpg">Moon diffuse</option>
+                <option value="moon-normal.jpg">Moon normal</option>
+                <option value="old-metal-diffuse.jpg">Old metal diffuse</option>
+                <option value="old-metal-normal.jpg">Old metal normal</option>
+                <option value="red.jpg">Red planet</option>
+                <option value="rust-diffuse.jpg">Rust diffuse</option>
+                <option value="rust-normal.jpg">Rust normal</option>
+                <option value="snow-diffuse.jpg">Snow diffuse</option>
+                <option value="snow-normal.jpg">Snow normal</option>
+                <option value="snow-specular.jpg">Snow specular</option>
+                <option value="space-box-diffuse.jpg">Space box diffuse</option>
+                <option value="space-box-normal.jpg">Space box normal</option>
+                <option value="space-box-specular.jpg">Space box specular</option>
+                <option value="space-dots-diffuse.jpg">Space dots diffuse</option>
+                <option value="space-dots-normal.jpg">Space dots normal</option>
+                <option value="space-dots-specular.jpg">Space dots specular</option>
+                <option value="space-octagons-diffuse.jpg">Space octagons diffuse</option>
+                <option value="space-octagons-normal.jpg">Space octagons normal</option>
+                <option value="space-octagons-specular.jpg">Space octagons specular</option>
+
+                <option value="airplane.png">Airplane (with transparency)</option>
+                <option value="pony-transparent-bg.png">Pony (with transparency)</option>
+                <option value="star-smooth-borders.png">Star 1 (with transparency)</option>
+                <option value="star.png">Star 2 (with transparency)</option>
+            </select>
+            <label for="sampler0">); CoronaSampler1(</label>
+            <select id="sampler1" onchange="samplerChange(event, 1)">
+                <option disabled selected>-- optional second texture --</option>
+                <option value="brick-line-diffuse.jpg">Brick line diffuse</option>
+                <option value="brick-line-normal.jpg">Brick line normal</option>
+                <option value="brick-line-specular.jpg">Brick line specular</option>
+                <option value="brick-ornament-diffuse.jpg">Brick ornament diffuse</option>
+                <option value="brick-ornament-normal.jpg">Brick ornament normal</option>
+                <option value="brick-ornament-specular.jpg">Brick ornament specular</option>
+                <option value="cement-diffuse.jpg">Cement diffuse</option>
+                <option value="cement-normal.jpg">Cement normal</option>
+                <option value="cereal-diffuse.jpg">Cereal diffuse</option>
+                <option value="cereal-normal.jpg">Cereal normal</option>
+                <option value="checkerboard-diffuse.jpg">Checkerboard diffuse</option>
+                <option value="checkerboard-normal.jpg">Checkerboard normal</option>
+                <option value="chip-diffuse.jpg">Chip diffuse</option>
+                <option value="chip-normal.jpg">Chip normal</option>
+                <option value="chip-specular.jpg">Chip specular</option>
+                <option value="clouds.jpg">Clouds</option>
+                <option value="crystals-big-diffuse.jpg">Crystals big diffuse</option>
+                <option value="crystals-big-normal.jpg">Crystals big normal</option>
+                <option value="crystals-big-specular.jpg">Crystals big specular</option>
+                <option value="desert-cracks-diffuse.jpg">Desert cracks diffuse</option>
+                <option value="desert-cracks-normal.jpg">Desert cracks normal</option>
+                <option value="desert-cracks-specular.jpg">Desert cracks specular</option>
+                <option value="desert-ground-diffuse.jpg">Desert ground diffuse</option>
+                <option value="desert-ground-normal.jpg">Desert ground normal</option>
+                <option value="desert-mntn-diffuse.jpg">Desert mntn diffuse</option>
+                <option value="desert-mntn-normal.jpg">Desert mntn normal</option>
+                <option value="desert-sand-diffuse.jpg">Desert sand diffuse</option>
+                <option value="desert-sand-normal.jpg">Desert sand normal</option>
+                <option value="desert-sand-specular.jpg">Desert sand specular</option>
+                <option value="dirt-weeds-diffuse.jpg">Dirt weeds diffuse</option>
+                <option value="dirt-weeds-normal.jpg">Dirt weeds normal</option>
+                <option value="dry-ground-diffuse.jpg">Dry ground diffuse</option>
+                <option value="dry-ground-normal.jpg">Dry ground normal</option>
+                <option value="grass-diffuse.jpg">Grass diffuse</option>
+                <option value="grass-normal.jpg">Grass normal</option>
+                <option value="gray-diffuse.jpg">Gray diffuse</option>
+                <option value="gray-normal.jpg">Gray normal</option>
+                <option value="gray-specular.jpg">Gray specular</option>
+                <option value="jungle-mntn-diffuse.jpg">Jungle mntn diffuse</option>
+                <option value="jungle-mntn-normal.jpg">Jungle mntn normal</option>
+                <option value="leaves-diffuse.jpg">Leaves diffuse</option>
+                <option value="leaves-normal.jpg">Leaves normal</option>
+                <option value="moon-bump.jpg">Moon bump</option>
+                <option value="moon-diffuse.jpg">Moon diffuse</option>
+                <option value="moon-normal.jpg">Moon normal</option>
+                <option value="old-metal-diffuse.jpg">Old metal diffuse</option>
+                <option value="old-metal-normal.jpg">Old metal normal</option>
+                <option value="red.jpg">Red planet</option>
+                <option value="rust-diffuse.jpg">Rust diffuse</option>
+                <option value="rust-normal.jpg">Rust normal</option>
+                <option value="snow-diffuse.jpg">Snow diffuse</option>
+                <option value="snow-normal.jpg">Snow normal</option>
+                <option value="snow-specular.jpg">Snow specular</option>
+                <option value="space-box-diffuse.jpg">Space box diffuse</option>
+                <option value="space-box-normal.jpg">Space box normal</option>
+                <option value="space-box-specular.jpg">Space box specular</option>
+                <option value="space-dots-diffuse.jpg">Space dots diffuse</option>
+                <option value="space-dots-normal.jpg">Space dots normal</option>
+                <option value="space-dots-specular.jpg">Space dots specular</option>
+                <option value="space-octagons-diffuse.jpg">Space octagons diffuse</option>
+                <option value="space-octagons-normal.jpg">Space octagons normal</option>
+                <option value="space-octagons-specular.jpg">Space octagons specular</option>
+
+                <option value="airplane.png">Airplane (with transparency)</option>
+                <option value="pony-transparent-bg.png">Pony (with transparency)</option>
+                <option value="star-smooth-borders.png">Star 1 (with transparency)</option>
+                <option value="star.png">Star 2 (with transparency)</option>
+            </select>);<br/>
+
+				<span class="cm-keyword">vec4</span> <span class="cm-variable">CoronaVertexUserData</span> <span class="cm-operator">=</span>
+				<span class="cm-keyword">vec4</span>(<input type="number" step="0.01" pattern="[0-9]*\.?[0-9]*" onchange="valuesFromControls();" title="CoronaVertexUserData.x" id="v_data0" width="4" value="0"/>,
+													 <input type="number" step="0.01" pattern="[0-9]*\.?[0-9]*" onchange="valuesFromControls();" title="CoronaVertexUserData.y" id="v_data1" width="4" value="0"/>,
+													 <input type="number" step="0.01" pattern="[0-9]*\.?[0-9]*" onchange="valuesFromControls();" title="CoronaVertexUserData.z" id="v_data2" width="4" value="0"/>,
+													 <input type="number" step="0.01" pattern="[0-9]*\.?[0-9]*" onchange="valuesFromControls();" title="CoronaVertexUserData.w" id="v_data3" width="4" value="0"/>);
+														<br/>
+				<!--   <span class="cm-keyword">vec4</span> <span class="cm-variable">CoronaColorScale</span> <span class="cm-operator">=</span> <span class="cm-keyword">vec4</span>(<span class="cm-number">rgb</span>: <input type="color" onchange="valuesFromControls();" value="#FFFFFF">, <span class="cm-number">α</span>:<input type="range" min=0 max=1 step="0.01" onchange="valuesFromControls();" value=1>) * <span class="cm-variable">color</span>; -->
+
+				<span class="cm-keyword">vec4</span> <span class="cm-variable">color</span> (<span class="cm-number">rgb</span>: <input type="color" id="tintColor" onchange="valuesFromControls();" value="#FFFFFF">, <span class="cm-number">α</span>:<input type="range" min=0 max=1 step="0.01" onchange="valuesFromControls();" value=1 id="tintAlpha">);
+
+
+				<span class="cm-keyword">vec4</span> <span class="cm-variable">bg</span> (<span class="cm-number">rgb</span>: <input type="color" onchange="valuesFromControls();" id="bgColor" value="#FFFFFF">, <span class="cm-number">α</span>:<input type="range" min=0 max=1 step="0.01" onchange="valuesFromControls();" value=1 id="bgAlpha">);
+
+			</span>
+
+		</div>
+        <canvas id="canvas" class="right" width="500" height="500"></canvas>
+        <div id="editor"></div>
+		<div>
+        	<button onclick="fetchShortLink(event)" id="generateUrlButton">Generate Share Link</button>
+        	<input type="text" style="visibility: hidden" readonly="readonly" id="urlGoesHere"  title="Send this link to share your shader!"/>
+            <div id="share-buttons"></div>
+        </div>
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-61932939-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+
+	</body>
+</html>
